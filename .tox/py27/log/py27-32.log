@@ -1,0 +1,16 @@
+actionid: py27
+msg: installpkg
+cmdargs: '/Users/marcos/Projects/yoyo-database-migrations/.tox/py27/bin/python -m pip install --no-deps -U /Users/marcos/Projects/yoyo-database-migrations/.tox/.tmp/package/1/yoyo-migrations-6.0.1.dev0.zip'
+
+Looking in indexes: https://pypi.python.org/simple/
+Processing ./.tox/.tmp/package/1/yoyo-migrations-6.0.1.dev0.zip
+Building wheels for collected packages: yoyo-migrations
+  Running setup.py bdist_wheel for yoyo-migrations: started
+  Running setup.py bdist_wheel for yoyo-migrations: finished with status 'done'
+  Stored in directory: /Users/marcos/Library/Caches/pip/wheels/fe/3f/ef/2c670fa17d3f1d81923fdcc04be4f28d38e9705975412ba90c
+Successfully built yoyo-migrations
+Installing collected packages: yoyo-migrations
+  Found existing installation: yoyo-migrations 6.0.1.dev0
+    Not uninstalling yoyo-migrations at /Users/marcos/Projects/yoyo-database-migrations, outside environment /Users/marcos/Projects/yoyo-database-migrations/.tox/py27/bin/..
+    Can't uninstall 'yoyo-migrations'. No files were found to uninstall.
+Successfully installed yoyo-migrations-6.0.1.dev0

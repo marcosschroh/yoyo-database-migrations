@@ -1,0 +1,20 @@
+actionid: py36-flake8
+msg: installpkg
+cmdargs: '/Users/marcos/Projects/yoyo-database-migrations/.tox/py36-flake8/bin/python -m pip install --exists-action w /Users/marcos/Projects/yoyo-database-migrations/.tox/.tmp/package/1/yoyo-migrations-6.0.1.dev0.zip'
+
+Looking in indexes: https://pypi.python.org/simple/
+Processing ./.tox/.tmp/package/1/yoyo-migrations-6.0.1.dev0.zip
+Collecting text-unidecode (from yoyo-migrations==6.0.1.dev0)
+  Using cached https://files.pythonhosted.org/packages/79/42/d717cc2b4520fb09e45b344b1b0b4e81aa672001dd128c180fabc655c341/text_unidecode-1.2-py2.py3-none-any.whl
+Collecting iniherit (from yoyo-migrations==6.0.1.dev0)
+Requirement already satisfied: six>=1.6.1 in ./.tox/py36-flake8/lib/python3.6/site-packages (from iniherit->yoyo-migrations==6.0.1.dev0) (1.12.0)
+Building wheels for collected packages: yoyo-migrations
+  Running setup.py bdist_wheel for yoyo-migrations: started
+  Running setup.py bdist_wheel for yoyo-migrations: finished with status 'done'
+  Stored in directory: /Users/marcos/Library/Caches/pip/wheels/fe/3f/ef/2c670fa17d3f1d81923fdcc04be4f28d38e9705975412ba90c
+Successfully built yoyo-migrations
+Installing collected packages: text-unidecode, iniherit, yoyo-migrations
+  Found existing installation: yoyo-migrations 6.0.1.dev0
+    Not uninstalling yoyo-migrations at /Users/marcos/Projects/yoyo-database-migrations, outside environment /Users/marcos/Projects/yoyo-database-migrations/.tox/py36-flake8/bin/..
+    Can't uninstall 'yoyo-migrations'. No files were found to uninstall.
+Successfully installed iniherit-0.3.9 text-unidecode-1.2 yoyo-migrations-6.0.1.dev0

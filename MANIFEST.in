@@ -1,0 +1,4 @@
+include *.txt *.rst
+include ez_setup.py
+recursive-include doc *.rst *.py Makefile
+recursive-include tests *.py

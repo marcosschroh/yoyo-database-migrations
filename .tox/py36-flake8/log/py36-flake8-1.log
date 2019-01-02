@@ -1,0 +1,41 @@
+actionid: py36-flake8
+msg: getenv
+cmdargs: '/Users/marcos/Projects/yoyo-database-migrations/.tox/py36-flake8/bin/python -m pip install flake8 PyMySQL psycopg2 pytest mock frozendate tms'
+
+Looking in indexes: https://pypi.python.org/simple/
+Collecting flake8
+  Using cached https://files.pythonhosted.org/packages/34/a6/49e2849a0e5464e1b5d621f63bc8453066f0f367bb3b744a33fca0bc1ddd/flake8-3.6.0-py2.py3-none-any.whl
+Collecting PyMySQL
+  Using cached https://files.pythonhosted.org/packages/ed/39/15045ae46f2a123019aa968dfcba0396c161c20f855f11dea6796bcaae95/PyMySQL-0.9.3-py2.py3-none-any.whl
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/a8/43/61f34c4d91370d239916f7f0fb989d841b9cfe70cd1e16b62c880cea093f/psycopg2-2.7.6.1-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
+Collecting pytest
+  Using cached https://files.pythonhosted.org/packages/19/80/1ac71d332302a89e8637456062186bf397abc5a5b663c1919b73f4d68b1b/pytest-4.0.2-py2.py3-none-any.whl
+Collecting mock
+  Using cached https://files.pythonhosted.org/packages/e6/35/f187bdf23be87092bd0f1200d43d23076cee4d0dec109f195173fd3ebc79/mock-2.0.0-py2.py3-none-any.whl
+Collecting frozendate
+  Using cached https://files.pythonhosted.org/packages/9c/05/614de39ab3be49aa502ff8ce4911bc64ec4b1451342e31d33abf69cf127d/frozendate-0.1.3-py3-none-any.whl
+Collecting tms
+Collecting pyflakes<2.1.0,>=2.0.0 (from flake8)
+  Using cached https://files.pythonhosted.org/packages/44/98/af7a72c9a543b1487d92813c648cb9b9adfbc96faef5455d60f4439aa99b/pyflakes-2.0.0-py2.py3-none-any.whl
+Collecting pycodestyle<2.5.0,>=2.4.0 (from flake8)
+  Using cached https://files.pythonhosted.org/packages/e5/c6/ce130213489969aa58610042dff1d908c25c731c9575af6935c2dfad03aa/pycodestyle-2.4.0-py2.py3-none-any.whl
+Collecting mccabe<0.7.0,>=0.6.0 (from flake8)
+  Using cached https://files.pythonhosted.org/packages/87/89/479dc97e18549e21354893e4ee4ef36db1d237534982482c3681ee6e7b57/mccabe-0.6.1-py2.py3-none-any.whl
+Requirement already satisfied: setuptools>=30 in ./.tox/py36-flake8/lib/python3.6/site-packages (from flake8) (40.6.3)
+Collecting py>=1.5.0 (from pytest)
+  Using cached https://files.pythonhosted.org/packages/3e/c7/3da685ef117d42ac8d71af525208759742dd235f8094221fdaafcd3dba8f/py-1.7.0-py2.py3-none-any.whl
+Collecting more-itertools>=4.0.0 (from pytest)
+  Using cached https://files.pythonhosted.org/packages/a4/a6/42f17d065bda1fac255db13afc94c93dbfb64393eae37c749b4cb0752fc7/more_itertools-5.0.0-py3-none-any.whl
+Collecting pluggy>=0.7 (from pytest)
+  Using cached https://files.pythonhosted.org/packages/1c/e7/017c262070af41fe251401cb0d0e1b7c38f656da634cd0c15604f1f30864/pluggy-0.8.0-py2.py3-none-any.whl
+Collecting attrs>=17.4.0 (from pytest)
+  Using cached https://files.pythonhosted.org/packages/3a/e1/5f9023cc983f1a628a8c2fd051ad19e76ff7b142a0faf329336f9a62a514/attrs-18.2.0-py2.py3-none-any.whl
+Collecting six>=1.10.0 (from pytest)
+  Using cached https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
+Collecting atomicwrites>=1.0 (from pytest)
+  Using cached https://files.pythonhosted.org/packages/3a/9a/9d878f8d885706e2530402de6417141129a943802c084238914fa6798d97/atomicwrites-1.2.1-py2.py3-none-any.whl
+Collecting pbr>=0.11 (from mock)
+  Using cached https://files.pythonhosted.org/packages/f3/04/fddc1c2dd75b256eda4d360024692231a2c19a0c61ad7f4a162407c1ab58/pbr-5.1.1-py2.py3-none-any.whl
+Installing collected packages: pyflakes, pycodestyle, mccabe, flake8, PyMySQL, psycopg2, py, six, more-itertools, pluggy, attrs, atomicwrites, pytest, pbr, mock, frozendate, tms
+Successfully installed PyMySQL-0.9.3 atomicwrites-1.2.1 attrs-18.2.0 flake8-3.6.0 frozendate-0.1.3 mccabe-0.6.1 mock-2.0.0 more-itertools-5.0.0 pbr-5.1.1 pluggy-0.8.0 psycopg2-2.7.6.1 py-1.7.0 pycodestyle-2.4.0 pyflakes-2.0.0 pytest-4.0.2 six-1.12.0 tms-0.1.2

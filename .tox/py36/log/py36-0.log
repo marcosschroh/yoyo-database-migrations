@@ -1,0 +1,10 @@
+actionid: py36
+msg: getenv
+cmdargs: '/Users/marcos/.virtualenvs/yoyo-database-migrations/bin/python2.7 -m virtualenv --python /Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6 py36'
+
+Using base prefix '/Library/Frameworks/Python.framework/Versions/3.6'
+New python executable in /Users/marcos/Projects/yoyo-database-migrations/.tox/py36/bin/python3.6
+Also creating executable in /Users/marcos/Projects/yoyo-database-migrations/.tox/py36/bin/python
+Installing setuptools, pip, wheel...
+done.
+Running virtualenv with interpreter /Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6

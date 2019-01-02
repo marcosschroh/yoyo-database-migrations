@@ -1,0 +1,9 @@
+actionid: py36-sphinx
+msg: getenv
+cmdargs: "/Users/marcos/Projects/yoyo-database-migrations/.tox/py36-sphinx/bin/python -m pip install 'hg+http://bitbucket.org/ollyc/fresco-sphinx-theme#egg=fresco_sphinx_theme' sphinx PyMySQL psycopg2 pytest mock frozendate tms"
+
+Looking in indexes: https://pypi.python.org/simple/
+Collecting fresco_sphinx_theme from hg+http://bitbucket.org/ollyc/fresco-sphinx-theme#egg=fresco_sphinx_theme
+  Cloning hg http://bitbucket.org/ollyc/fresco-sphinx-theme to /private/var/folders/v5/f37c347d6gjd03v1qh92zp000000gn/T/pip-install-9aeqngff/fresco-sphinx-theme
+  Error [Errno 2] No such file or directory: 'hg': 'hg' while executing command hg clone --noupdate -q http://bitbucket.org/ollyc/fresco-sphinx-theme /private/var/folders/v5/f37c347d6gjd03v1qh92zp000000gn/T/pip-install-9aeqngff/fresco-sphinx-theme
+Cannot find command 'hg' - do you have 'hg' installed and in your PATH?

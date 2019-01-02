@@ -1,0 +1,4 @@
+[console_scripts]
+yoyo = yoyo.scripts.main:main
+yoyo-migrate = yoyo.scripts.main:main
+
