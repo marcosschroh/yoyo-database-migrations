@@ -1,0 +1,7 @@
+.tox/
+
+.vscode/
+
+*.pyc
+
+yoyo_migrations.egg-info/
