@@ -3,5 +3,6 @@
 .vscode/
 
 *.pyc
+__pycache__/
 
 yoyo_migrations.egg-info/

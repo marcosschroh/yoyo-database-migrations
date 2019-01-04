@@ -12,9 +12,10 @@ from yoyo import backends
 from yoyo import read_migrations
 from yoyo import exceptions
 from yoyo.connections import get_backend
-from yoyo.tests import get_test_backends
-from yoyo.tests import get_test_dburis
-from yoyo.tests import with_migrations
+
+from tests import get_test_backends
+from tests import get_test_dburis
+from tests import with_migrations
 
 
 class TestTransactionHandling(object):

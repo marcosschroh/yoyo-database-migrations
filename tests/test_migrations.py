@@ -22,7 +22,7 @@ from yoyo import read_migrations
 from yoyo import exceptions
 from yoyo import ancestors, descendants
 
-from yoyo.tests import with_migrations, migrations_dir, dburi
+from tests import with_migrations, migrations_dir, dburi
 from yoyo.migrations import topological_sort, MigrationList
 from yoyo.scripts import newmigration
 

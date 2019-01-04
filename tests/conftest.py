@@ -2,8 +2,9 @@ import pytest
 
 from yoyo import backends
 from yoyo.connections import get_backend
-from yoyo.tests import get_test_backends
-from yoyo.tests import get_test_dburis
+
+from tests import get_test_backends
+from tests import get_test_dburis
 
 
 @pytest.fixture(params=get_test_dburis())

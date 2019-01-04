@@ -1,0 +1,26 @@
+site_name: Yoyo Database Migrations
+
+site_description: Database schema migration tool.
+
+theme:
+  name: 'material'
+
+repo_name: marcosschroh/yoyo-database-migrations
+repo_url: https://github.com/marcosschroh/yoyo-database-migrations
+edit_uri: ""
+
+nav:
+    - Introduction: index.md
+    - Comand Line Usage: command_line_usage.md
+    - Connections: connections.md
+    - Password Security: password_security.md
+    - Migration Files: migration_files.md
+    - Post-apply hook: post_apply_hook.md
+    - Configuration file: configuration_file.md
+    - Transactions: transactions.md
+    - Disabling Transactions: disabling_transactions.md
+    - Using Yoyo from python code: using_yoyo_from_python_code.md
+  
+markdown_extensions:
+  - markdown.extensions.codehilite:
+      guess_lang: false

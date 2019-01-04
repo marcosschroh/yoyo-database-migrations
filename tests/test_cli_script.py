@@ -32,10 +32,11 @@ import tms
 
 from yoyo import read_migrations
 from yoyo.config import get_configparser
-from yoyo.tests import with_migrations, dburi
-from yoyo.tests import get_backend
 from yoyo.scripts.main import main, parse_args, LEGACY_CONFIG_FILENAME
 from yoyo.scripts import newmigration
+
+from tests import with_migrations, dburi
+from tests import get_backend
 
 
 def is_tmpfile(p, directory=None):

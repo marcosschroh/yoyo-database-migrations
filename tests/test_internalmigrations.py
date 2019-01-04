@@ -3,7 +3,7 @@ import getpass
 import socket
 
 from yoyo import internalmigrations
-from yoyo.tests import clear_database
+from tests import clear_database
 
 
 def assert_table_is_created(backend, table):
