@@ -15,6 +15,7 @@
 import argparse
 import re
 import warnings
+from tabulate import tabulate
 
 from yoyo import read_migrations, default_migration_table, ancestors, descendants
 from yoyo.scripts.main import InvalidArgument, get_backend
@@ -87,6 +88,11 @@ def install_argparsers(global_parser, subparsers):
     )
     parser_apply.set_defaults(func=apply, command_name="apply")
 
+    parser_apply = subparsers.add_parser(
+        "showmigrations", help="Show migrations", parents=[global_parser, migration_parser]
+    )
+    parser_apply.set_defaults(func=show_migrations, command_name="showmigrations")
+
     parser_rollback = subparsers.add_parser(
         "rollback",
         parents=[global_parser, migration_parser],
@@ -127,7 +133,6 @@ def install_argparsers(global_parser, subparsers):
 
 
 def get_migrations(args, backend):
-
     sources = args.sources
     dburi = args.database
 
@@ -147,6 +152,9 @@ def get_migrations(args, backend):
 
         elif args.func in {rollback, reapply, unmark}:
             migrations = backend.to_rollback(migrations)
+
+        elif args.func == show_migrations:
+            return backend.get_migrations_with_applied_status(migrations)
 
     if args.revision:
         targets = [m for m in migrations if args.revision in m.id]
@@ -211,6 +219,17 @@ def apply(args, config):
     with backend.lock():
         migrations = get_migrations(args, backend)
         backend.apply_migrations(migrations, args.force)
+
+
+def show_migrations(args, config):
+    backend = get_backend(args, config)
+    with backend.lock():
+        migrations = get_migrations(args, backend)
+
+        print(tabulate(
+            [(m.id, '\033[92m Yes \033[0m' if m.applied else '\033[91m No \033[0m') for m in migrations],
+            headers=['Migration', 'Applied'])
+        )
 
 
 def reapply(args, config):

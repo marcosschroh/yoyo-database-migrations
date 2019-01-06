@@ -135,6 +135,24 @@ def test_migration_is_committed(backend):
     assert list(rows) == []
 
 
+@with_migrations(
+    """
+    step("CREATE TABLE yoyo_test (id INT)", "DROP TABLE yoyo_test")
+    """
+)
+def test_show_migrations(tmpdir):
+    backend = get_backend(dburi)
+    migrations = read_migrations(tmpdir)
+
+    backend.apply_migrations(migrations)
+    migrations = backend.get_migrations_with_applied_status(migrations)
+    assert migrations[0].applied
+
+    backend.rollback_migrations(migrations)
+    migrations = backend.get_migrations_with_applied_status(migrations)
+    assert not migrations[0].applied
+
+
 def test_rollback_happens_on_step_failure(backend):
     with migrations_dir(
         """

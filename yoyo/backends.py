@@ -404,6 +404,22 @@ class DatabaseBackend(object):
         ms = (m for m in migrations if m.hash not in applied)
         return migrations.__class__(topological_sort(ms), migrations.post_apply)
 
+    def get_migrations_with_applied_status(self, migrations):
+        """
+        Return the status of all migrations (applied or not)
+        """
+        applied = self.get_applied_migration_hashes()
+
+        for migration in migrations:
+            if migration.hash in applied:
+                migration.applied = True
+            else:
+                migration.applied = False
+
+        return migrations.__class__(
+            reversed(topological_sort(migrations))
+        )
+
     def to_rollback(self, migrations):
         """
         Return the subset of migrations already applied and which may be

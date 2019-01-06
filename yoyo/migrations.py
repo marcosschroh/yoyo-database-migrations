@@ -64,6 +64,7 @@ class Migration(object):
         self.use_transactions = True
         self._depends = None
         self.__all_migrations[id] = self
+        self.applied = None
 
     def __repr__(self):
         return "<{} {!r} from {}>".format(self.__class__.__name__, self.id, self.path)
