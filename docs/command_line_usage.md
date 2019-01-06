@@ -12,6 +12,10 @@ Apply migrations from directory ``migrations`` to a PostgreSQL database:
 yoyo apply --database postgresql://scott:tiger@localhost/db ./migrations
 ```
 
+```bash
+yoyo showmigrations --database postgresql://scott:tiger@localhost/db ./migrations
+```
+
 Rollback migrations previously applied to a MySQL database:
 
 ```bash
