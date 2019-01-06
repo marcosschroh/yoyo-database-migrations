@@ -3,6 +3,15 @@ Yoyo database migrations
 
 This project has been clone from [ollyc/yoyo](https://bitbucket.org/ollyc/yoyo). Thanks Ollyc!!
 
+Why this repository?
+
+* To improve project documentation
+* To fix bugs related to different python versions
+* I had different issues on Mac but not on Linux, so fix them
+* To add full support for Python 3.6/3.7 (annotations, async/io databases drivers)
+* To add new Features
+* To add full code coverage
+
 Yoyo is a database schema migration tool. You write database migrations
 as Python scripts containing raw SQL statements or Python functions.
 
