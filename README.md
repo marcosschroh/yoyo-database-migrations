@@ -46,8 +46,12 @@ ODBC and Oracle database backends are available (but unsupported).
 Improvements
 ------------
 
+* Command `yoyo showmigrations` added
+
+
 ---
 
-**Documentation**
+Documentation
+-------------
 
 ---

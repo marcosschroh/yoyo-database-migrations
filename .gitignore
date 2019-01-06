@@ -5,4 +5,13 @@
 *.pyc
 __pycache__/
 
-yoyo_migrations.egg-info/
+# coverage
+.coverage
+	
+dist/
+yoyo_database_migrations.egg-info/
+
+# site documentation
+site/
+
+	

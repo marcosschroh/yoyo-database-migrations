@@ -24,4 +24,4 @@ def get_version():
                            f.read().decode('UTF-8'), re.M).group(1)
 
 
-setup(name='yoyo-migrations', version=get_version())
+setup(name='yoyo-database-migrations', version=get_version())
