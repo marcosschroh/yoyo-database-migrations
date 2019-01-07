@@ -1,7 +1,12 @@
 Yoyo database migrations
 ========================
 
+[![Build Status](https://travis-ci.org/marcosschroh/yoyo-database-migrations.svg?branch=master)](https://travis-ci.org/marcosschroh/yoyo-database-migrations)
+![License](https://img.shields.io/github/license/marcosschroh/yoyo-database-migrations.svg)
+[![codecov](https://codecov.io/gh/marcosschroh/yoyo-database-migrations/branch/master/graph/badge.svg)](https://codecov.io/gh/marcosschroh/yoyo-database-migrations)
+
 This project has been clone from [ollyc/yoyo](https://bitbucket.org/ollyc/yoyo). Thanks Ollyc!!
+
 
 Why this repository?
 
@@ -14,6 +19,13 @@ Why this repository?
 
 Yoyo is a database schema migration tool. You write database migrations
 as Python scripts containing raw SQL statements or Python functions.
+
+
+Documentation:
+--------------
+https://marcosschroh.github.io/yoyo-database-migrations/
+
+
 
 What does yoyo-migrations do?
 -----------------------------
@@ -43,15 +55,8 @@ Database support
 PostgreSQL, MySQL and SQLite databases are supported.
 ODBC and Oracle database backends are available (but unsupported).
  
+
 Improvements
 ------------
 
 * Command `yoyo showmigrations` added
-
-
----
-
-Documentation
--------------
-
----
