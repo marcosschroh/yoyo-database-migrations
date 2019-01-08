@@ -16,3 +16,11 @@ steps = [
     )
 ]
 ```
+
+Installation:
+-------------
+
+```
+pip install yoyo-database-migrations
+```
+

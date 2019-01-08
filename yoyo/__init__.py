@@ -25,4 +25,4 @@ from yoyo.migrations import (
 
 from yoyo.connections import get_backend  # noqa
 
-__version__ = "6.0.1.dev0"
+__version__ = "0.0.1"

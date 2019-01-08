@@ -20,6 +20,12 @@ Why this repository?
 Yoyo is a database schema migration tool. You write database migrations
 as Python scripts containing raw SQL statements or Python functions.
 
+Installation:
+------------
+```
+pip install yoyo-database-migrations
+```
+
 
 Documentation:
 --------------
