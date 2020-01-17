@@ -620,6 +620,25 @@ class MySQLBackend(DatabaseBackend):
             kwargs["port"] = dburi.port
         if "unix_socket" in dburi.args:
             kwargs["unix_socket"] = dburi.args["unix_socket"]
+        if "ssl" in dburi.args:
+            kwargs["ssl"] = dict()
+            
+            if "sslca" in dburi.args:
+                kwargs["ssl"]["ca"] = dburi.args["sslca"]
+                
+            if "sslcapath" in dburi.args:
+                kwargs["ssl"]["capath"] = dburi.args["sslcapath"]
+                
+            if "sslcert" in dburi.args:
+                kwargs["ssl"]["cert"] = dburi.args["sslcert"]
+                
+            if "sslkey" in dburi.args:
+                kwargs["ssl"]["key"] = dburi.args["sslkey"]
+            
+            if "sslcipher" in dburi.args:
+                kwargs["ssl"]["cipher"] = dburi.args["sslcipher"]
+            
+            
         kwargs["db"] = dburi.database
         return self.driver.connect(**kwargs)
 
