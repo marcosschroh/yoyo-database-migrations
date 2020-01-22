@@ -50,8 +50,10 @@ def test_transaction_is_not_committed_on_error(tmpdir):
     step("CREATE TABLE yoyo_limit_test (id INT)", "DROP table yoyo_limit_test")
     """,
     """
-step("INSERT INTO yoyo_limit_test VALUES (1)", "DELETE FROM yoyo_limit_test where id=1")
-step("INSERT INTO yoyo_limit_test VALUES (0)", "DELETE FROM yoyo_limit_test where id=0")
+    step("INSERT INTO yoyo_limit_test VALUES (1)", "DELETE FROM yoyo_limit_test where id=1")
+    """,
+    """
+    step("INSERT INTO yoyo_limit_test VALUES (0)", "DELETE FROM yoyo_limit_test where id=0")
     """,
 )
 def test_limits(tmpdir):
