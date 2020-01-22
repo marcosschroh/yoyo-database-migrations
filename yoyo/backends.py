@@ -452,6 +452,7 @@ class DatabaseBackend(object):
             except exceptions.BadMigration:
                 continue
             else:
+                print(self._internal_schema_updated)
                 current_count += 1
                 if limit is not None and current_count >= limit:
                     break
