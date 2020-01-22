@@ -435,7 +435,7 @@ class DatabaseBackend(object):
 
     def apply_migrations(self, migrations, force=False, limit=None):
         if migrations:
-            self.apply_migrations_only(migrations, force=force)
+            self.apply_migrations_only(migrations, force=force, limit=limit)
             self.run_post_apply(migrations, force=force)
 
     def apply_migrations_only(self, migrations, force=False, limit=None):
