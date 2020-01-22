@@ -16,4 +16,4 @@ fi
 find . -iname '*.pyc' -delete
 find . -iname '__pycache__' -delete
 
-rm sqlite::memory:
+rm -f sqlite::memory:
