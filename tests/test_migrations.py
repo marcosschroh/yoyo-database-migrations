@@ -45,6 +45,45 @@ def test_transaction_is_not_committed_on_error(tmpdir):
     cursor.execute("SELECT count(1) FROM yoyo_test")
     assert cursor.fetchone() == (0,)
 
+@with_migrations(
+    """
+    step("CREATE TABLE yoyo_limit_test (id INT)", "DROP table yoyo_limit_test")
+    """,
+    """
+step("INSERT INTO yoyo_limit_test VALUES (1)", "DELETE FROM yoyo_limit_test where id=1")
+step("INSERT INTO yoyo_limit_test VALUES (0)", "DELETE FROM yoyo_limit_test where id=0")
+    """,
+)
+def test_limits(tmpdir):
+    backend = get_backend(dburi)
+    migrations = read_migrations(tmpdir)
+    # Should insert a single 1
+    backend.apply_migrations(migrations, limit=2)
+    cursor = backend.cursor()
+    cursor.execute("SELECT * FROM yoyo_test where id = 0")
+    all_results = cursor.fetchall()
+    assert len(all_results) == 0
+    cursor.execute("SELECT * FROM yoyo_test where id = 1")
+    all_results = cursor.fetchall()
+    assert len(all_results) == 1
+    
+    # Should insert Zero
+    backend.apply_migrations(migrations, limit=1)
+    cursor.execute("SELECT * FROM yoyo_limit_test where id = 0")
+    all_results = cursor.fetchall()
+    assert len(all_results) == 1
+    
+    # Should Remove the Zero
+    backend.rollback_migrations(migrations, limit=1)
+    cursor.execute("SELECT * FROM yoyo_limit_test where id = 0")
+    all_results = cursor.fetchall()
+    assert len(all_results) == 0
+    
+    cursor.execute("SELECT * FROM yoyo_limit_test where id = 1")
+    all_results = cursor.fetchall()
+    assert len(all_results) == 1
+    
+
 
 @with_migrations(
     'step("CREATE TABLE yoyo_test (id INT)")',

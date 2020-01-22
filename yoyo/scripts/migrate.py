@@ -27,6 +27,13 @@ def install_argparsers(global_parser, subparsers):
     migration_parser.add_argument(
         "sources", nargs="*", help="Source directory of migration scripts"
     )
+    
+    migration_parser.add_arumgent(
+        "-l",
+        "--limit",
+        default=None,
+        help="Limit apply, rollback or reapply to N migrations."
+    )
 
     migration_parser.add_argument(
         "-d",
@@ -218,7 +225,7 @@ def apply(args, config):
     backend = get_backend(args, config)
     with backend.lock():
         migrations = get_migrations(args, backend)
-        backend.apply_migrations(migrations, args.force)
+        backend.apply_migrations(migrations, args.force, limit=args.limit)
 
 
 def show_migrations(args, config):
@@ -236,16 +243,16 @@ def reapply(args, config):
     backend = get_backend(args, config)
     with backend.lock():
         migrations = get_migrations(args, backend)
-        backend.rollback_migrations(migrations, args.force)
+        backend.rollback_migrations(migrations, args.force, limit=args.limit)
         migrations = backend.to_apply(migrations)
-        backend.apply_migrations(migrations, args.force)
+        backend.apply_migrations(migrations, args.force, limit=args.limit)
 
 
 def rollback(args, config):
     backend = get_backend(args, config)
     with backend.lock():
         migrations = get_migrations(args, backend)
-        backend.rollback_migrations(migrations, args.force)
+        backend.rollback_migrations(migrations, args.force, limit=args.limit)
 
 
 def mark(args, config):

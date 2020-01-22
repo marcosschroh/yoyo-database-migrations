@@ -433,23 +433,28 @@ class DatabaseBackend(object):
             reversed(topological_sort(ms)), migrations.post_apply
         )
 
-    def apply_migrations(self, migrations, force=False):
+    def apply_migrations(self, migrations, force=False, limit=None):
         if migrations:
             self.apply_migrations_only(migrations, force=force)
             self.run_post_apply(migrations, force=force)
 
-    def apply_migrations_only(self, migrations, force=False):
+    def apply_migrations_only(self, migrations, force=False, limit=None):
         """
         Apply the list of migrations, but do not run any post-apply hooks
         present.
         """
         if not migrations:
             return
+        current_count = 0
         for m in migrations:
             try:
                 self.apply_one(m, force=force)
             except exceptions.BadMigration:
                 continue
+            else:
+                current_count += 1
+                if limit is not None and current_count >= limit:
+                    break
 
     def run_post_apply(self, migrations, force=False):
         """
@@ -458,15 +463,22 @@ class DatabaseBackend(object):
         for m in migrations.post_apply:
             self.apply_one(m, mark=False, force=force)
 
-    def rollback_migrations(self, migrations, force=False):
+    def rollback_migrations(self, migrations, force=False, limit=None):
         self.ensure_internal_schema_updated()
         if not migrations:
             return
+        current_count = 0
         for m in migrations:
             try:
                 self.rollback_one(m, force)
             except exceptions.BadMigration:
                 continue
+            else:
+                current_count += 1
+                
+                if limit is not None and current_count >= limit:
+                    # I've Reachd My Limit
+                    break
 
     def mark_migrations(self, migrations):
         self.ensure_internal_schema_updated()
