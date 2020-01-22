@@ -634,11 +634,10 @@ class MySQLBackend(DatabaseBackend):
                 
             if "sslkey" in dburi.args:
                 kwargs["ssl"]["key"] = dburi.args["sslkey"]
-            
+                
             if "sslcipher" in dburi.args:
                 kwargs["ssl"]["cipher"] = dburi.args["sslcipher"]
-            
-            
+
         kwargs["db"] = dburi.database
         return self.driver.connect(**kwargs)
 
