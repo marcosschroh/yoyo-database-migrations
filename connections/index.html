@@ -328,6 +328,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mysql-with-the-mysqldb-driver-using-ssltls-to-encrypt-a-connection" title="MySQL with the MySQLdb driver (Using SSL/TLS to Encrypt a Connection)" class="md-nav__link">
+    MySQL with the MySQLdb driver (Using SSL/TLS to Encrypt a Connection)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#postgresql-database-connection" title="PostgreSQL: database connection" class="md-nav__link">
     PostgreSQL: database connection
   </a>
@@ -506,6 +513,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mysql-with-the-mysqldb-driver-using-ssltls-to-encrypt-a-connection" title="MySQL with the MySQLdb driver (Using SSL/TLS to Encrypt a Connection)" class="md-nav__link">
+    MySQL with the MySQLdb driver (Using SSL/TLS to Encrypt a Connection)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#postgresql-database-connection" title="PostgreSQL: database connection" class="md-nav__link">
     PostgreSQL: database connection
   </a>
@@ -572,7 +586,12 @@
 
 
 <h3 id="mysql-with-the-mysqldb-driver-instead-of-pymysql">MySQL with the MySQLdb driver (instead of pymysql)</h3>
-<div class="codehilite"><pre><span></span>database = mysql+mysqldb://scott:tiger@localhost/mydatabase
+<div class="codehilite"><pre><span></span><span class="n">database</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">+</span><span class="n">mysqldb</span><span class="p">:</span><span class="o">//</span><span class="n">scott</span><span class="p">:</span><span class="n">tiger</span><span class="nd">@localhost</span><span class="o">/</span><span class="n">mydatabase</span>
+</pre></div>
+
+
+<h3 id="mysql-with-the-mysqldb-driver-using-ssltls-to-encrypt-a-connection">MySQL with the MySQLdb driver (Using SSL/TLS to Encrypt a Connection)</h3>
+<div class="codehilite"><pre><span></span><span class="n">database</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">+</span><span class="n">mysqldb</span><span class="p">:</span><span class="o">//</span><span class="n">scott</span><span class="p">:</span><span class="n">tiger</span><span class="nd">@localhost</span><span class="o">/</span><span class="n">mydatabase</span><span class="err">?</span><span class="n">ssl</span><span class="o">=</span><span class="n">yes</span><span class="o">&amp;</span><span class="n">sslca</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cert</span>
 </pre></div>
 
 
