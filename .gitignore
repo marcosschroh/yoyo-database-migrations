@@ -14,4 +14,7 @@ yoyo_database_migrations.egg-info/
 # site documentation
 site/
 
-	
+*.bak
+
+# database
+sqlite::memory:
