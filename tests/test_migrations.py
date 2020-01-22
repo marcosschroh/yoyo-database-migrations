@@ -70,24 +70,33 @@ def test_limits(tmpdir):
     cursor.execute("SELECT * FROM yoyo_limit_test where id = 0")
     all_results = cursor.fetchall()
     assert len(all_results) == 0
+    
     cursor.execute("SELECT * FROM yoyo_limit_test where id = 1")
     all_results = cursor.fetchall()
     assert len(all_results) == 1
     
     # Should insert Zero
-    backend.apply_migrations(migrations, limit=1)
-    cursor.execute("SELECT * FROM yoyo_limit_test where id = 0")
-    all_results = cursor.fetchall()
+    backend2 = get_backend(dburi)
+    forward_migrations = read_migrations(tmpdir)
+    # Should Apply the Last Migration
+    backend2.apply_migrations(forward_migrations, limit=1)
+    cursor2 = backend2.cursor()
+    cursor2.execute("SELECT * FROM yoyo_limit_test where id = 0")
+    all_results = cursor2.fetchall()
     assert len(all_results) == 1
     
+    # Round 3 Let's Do a limited Rollback
     # Should Remove the Zero
-    backend.rollback_migrations(migrations, limit=1)
-    cursor.execute("SELECT * FROM yoyo_limit_test where id = 0")
-    all_results = cursor.fetchall()
+    backend3 = get_backend(dburi)
+    backward_migrations = read_migrations(tmpdir)
+    backend3.apply_migrations(backward_migrations, limit=1)
+    backend3.rollback_migrations(migrations, limit=1)
+    cursor3 = backend3.cursor()
+    cursor3.execute("SELECT * FROM yoyo_limit_test where id = 0")
+    all_results = cursor3.fetchall()
     assert len(all_results) == 0
-    
-    cursor.execute("SELECT * FROM yoyo_limit_test where id = 1")
-    all_results = cursor.fetchall()
+    cursor3.execute("SELECT * FROM yoyo_limit_test where id = 1")
+    all_results = cursor3.fetchall()
     assert len(all_results) == 1
     
 
