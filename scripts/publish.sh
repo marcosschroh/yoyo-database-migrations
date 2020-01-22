@@ -22,7 +22,7 @@ ${PREFIX}twine upload dist/*
 ${PREFIX}mkdocs gh-deploy
 
 echo "You probably want to also tag the version now:"
-echo "git tag -a ${VERSION} -m 'version ${VERSION}'"
-echo "git push --tags"
+echo "git tag -a v${VERSION} -m 'version v${VERSION}'"
+echo "git push origin v${VERSION}"
 
 scripts/clean.sh
