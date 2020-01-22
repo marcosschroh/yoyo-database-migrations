@@ -60,10 +60,10 @@ def test_limits(tmpdir):
     # Should insert a single 1
     backend.apply_migrations(migrations, limit=2)
     cursor = backend.cursor()
-    cursor.execute("SELECT * FROM yoyo_test where id = 0")
+    cursor.execute("SELECT * FROM yoyo_limit_test where id = 0")
     all_results = cursor.fetchall()
     assert len(all_results) == 0
-    cursor.execute("SELECT * FROM yoyo_test where id = 1")
+    cursor.execute("SELECT * FROM yoyo_limit_test where id = 1")
     all_results = cursor.fetchall()
     assert len(all_results) == 1
     
