@@ -28,7 +28,7 @@ def install_argparsers(global_parser, subparsers):
         "sources", nargs="*", help="Source directory of migration scripts"
     )
     
-    migration_parser.add_arumgent(
+    migration_parser.add_argument(
         "-l",
         "--limit",
         default=None,
