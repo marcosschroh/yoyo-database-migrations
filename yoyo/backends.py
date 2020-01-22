@@ -447,12 +447,15 @@ class DatabaseBackend(object):
             return
         current_count = 0
         for m in migrations:
+            print(m)
+            print(m._apply)
             try:
                 self.apply_one(m, force=force)
             except exceptions.BadMigration:
                 continue
             else:
-                print(self._internal_schema_updated)
+                print(m)
+                print(m._apply)
                 current_count += 1
                 if limit is not None and current_count >= limit:
                     break
