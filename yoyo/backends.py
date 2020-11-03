@@ -641,18 +641,23 @@ class MySQLBackend(DatabaseBackend):
             
             if "sslca" in dburi.args:
                 kwargs["ssl"]["ca"] = dburi.args["sslca"]
+                kwargs.pop("sslca")
                 
             if "sslcapath" in dburi.args:
                 kwargs["ssl"]["capath"] = dburi.args["sslcapath"]
+                kwargs.pop("sslcapath")
                 
             if "sslcert" in dburi.args:
                 kwargs["ssl"]["cert"] = dburi.args["sslcert"]
+                kwargs.pop("sslcert")
                 
             if "sslkey" in dburi.args:
                 kwargs["ssl"]["key"] = dburi.args["sslkey"]
+                kwargs.pop("sslkey")
                 
             if "sslcipher" in dburi.args:
                 kwargs["ssl"]["cipher"] = dburi.args["sslcipher"]
+                kwargs.pop("sslcipher")
 
         kwargs["db"] = dburi.database
         return self.driver.connect(**kwargs)
