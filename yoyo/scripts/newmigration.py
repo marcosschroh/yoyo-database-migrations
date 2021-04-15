@@ -126,8 +126,8 @@ def slugify(message):
 
 
 def make_filename(config, directory, message):
-    lines = (l.strip() for l in message.split("\n"))
-    lines = (l for l in lines if l)
+    lines = (line.strip() for line in message.split("\n"))
+    lines = (line for line in lines if line)
     message = next(lines, None)
 
     if message:
