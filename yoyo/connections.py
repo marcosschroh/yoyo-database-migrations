@@ -24,6 +24,7 @@ from .backends import (
     OracleBackend,
     MySQLBackend,
     MySQLdbBackend,
+    ExasolBackend,
 )
 from .compat import urlsplit, urlunsplit, parse_qsl, urlencode, quote, unquote
 
@@ -36,6 +37,8 @@ BACKENDS = {
     "mysql": MySQLBackend,
     "mysql+mysqldb": MySQLdbBackend,
     "sqlite": SQLiteBackend,
+    "exasol": ExasolBackend,
+    "exasoldb": ExasolBackend,
 }
 
 

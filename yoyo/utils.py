@@ -145,6 +145,7 @@ def change_param_style(target_style, sql, bind_parameters):
         "numeric": lambda name, c=count(1): ":{}".format(next(c)),
         "format": lambda name: "%s",
         "pyformat": lambda name: "%({})s".format(name),
+        "pyexasol": lambda name: "{{{}}}".format(name),
     }[target_style]
 
     pattern = re.compile(
