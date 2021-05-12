@@ -574,7 +574,9 @@ class OracleBackend(DatabaseBackend):
     list_tables_sql = "SELECT table_name FROM all_tables WHERE owner=user"
 
     def begin(self):
-        """Oracle is always in a transaction, and has no "BEGIN" statement."""
+        """
+        Oracle is always in a transaction, and has no "BEGIN" statement.
+        """
         self._in_transaction = True
 
     def connect(self, dburi):
@@ -705,6 +707,92 @@ class PostgresqlBackend(DatabaseBackend):
         return super(PostgresqlBackend, self).list_tables(
             schema=(self.schema if self.schema else "public")
         )
+
+
+class ExasolBackend(DatabaseBackend):
+
+    driver_module = "pyexasol"
+    list_tables_sql = (
+        "select OBJECT_NAME from EXA_ALL_OBJECTS "
+        "where OBJECT_TYPE = 'TABLE' and ROOT_TYPE = 'SCHEMA'"
+    )
+
+    def __init__(self, dburi, migration_table):
+        self.paramstyle = "pyexasol"
+        self.uri = dburi
+        self.DatabaseError = self.driver.ExaError
+        self._connection = self.connect(dburi)
+        self.init_connection(self._connection)
+        self.migration_table = migration_table
+        self.create_lock_table()
+        self.has_transactional_ddl = self._check_transactional_ddl()
+
+    def _load_driver_module(self):
+        driver = get_dbapi_module(self.driver_module)
+        exceptions.register(driver.ExaError)
+        return driver
+
+    def connect(self, dburi):
+        kwargs = {}
+        kwargs.update(dburi.args)
+        if dburi.username is not None:
+            kwargs["user"] = dburi.username
+        if dburi.password is not None:
+            kwargs["password"] = dburi.password
+        port = dburi.port or "8563"
+        if dburi.hostname is not None:
+            kwargs["dsn"] = "{}:{}".format(dburi.hostname, port)
+        self.schema = kwargs.get("schema")
+        return self.driver.connect(**kwargs)
+
+    @contextmanager
+    def disable_transactions(self):
+        with super(ExasolBackend, self).disable_transactions():
+            saved = self.connection.autocommit
+            self.connection.set_autocommit = True
+            yield
+            self.connection.set_autocommit = saved
+
+    def cursor(self):
+        self.connection.description = None
+        self.connection._close = self.connection.close
+        self.connection.close = lambda *args: None
+        return self.connection
+
+    def execute(self, sql, params=None):
+        if params and not isinstance(params, Mapping):
+            raise TypeError("Expected dict or other mapping object")
+
+        cursor = self.cursor()
+        sql, params = utils.change_param_style(self.paramstyle, sql, params)
+        return cursor.execute(sql, params)
+
+    def list_tables(self, **kwargs):
+        if self.schema:
+            self.list_tables_sql = self.list_tables_sql + "and ROOT_NAME = '{}'".format(
+                self.schema
+            )
+        tables_lists = self.cursor().export_to_list(self.list_tables_sql)
+        return [table_list[0] for table_list in tables_lists]
+
+    def commit(self):
+        self.connection.commit()
+        self._in_transaction = False
+
+    def begin(self):
+        """
+        Exasol DB does not support savepoints so this and following methods were redefined.
+        """
+        self._in_transaction = True
+
+    def savepoint(self, *args):
+        pass
+
+    def savepoint_release(self, *args):
+        pass
+
+    def savepoint_rollback(self, *args):
+        pass
 
 
 def get_dbapi_module(name):
